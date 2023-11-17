@@ -1,9 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>gabe565/renovate-config",
-    ":automergeAll"
+    "local>gabe565/renovate-config"
   ],
+  "github-actions": {
+    "automerge": true
+  },
+  "regex": {
+    "automerge": true
+  },
   "regexManagers": [
     {
       "fileMatch": ["Dockerfile", "^\\.github/workflows/"],
