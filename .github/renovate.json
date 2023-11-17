@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>gabe565/renovate-config",
+    ":automergeAll"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["Dockerfile", "^\\.github/workflows/"],
+      "matchStrings": [
+        "\\s*KHINSIDER_REPO: +(?<depName>.+)\\n\\s*KHINSIDER_REF: +(?<currentValue>.+)",
+        "ARG +KHINSIDER_REPO=(?<depName>.+)\\nARG +KHINSIDER_REF=(?<currentValue>.+)"
+      ],
+      "packageNameTemplate": "https://github.com/{{depName}}",
+      "datasourceTemplate": "git-refs"
+    }
+  ]
+}
