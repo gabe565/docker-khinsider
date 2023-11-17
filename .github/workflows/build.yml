@@ -1,0 +1,62 @@
+name: Build
+
+on: push
+
+env:
+  KHINSIDER_REPO: obskyr/khinsider
+  KHINSIDER_REF: b1683fbf2897f04242bd8e67eade940d1b6f2f16
+
+jobs:
+  build:
+    name: Build Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: short-sha
+        name: Get short sha
+        run: echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ghcr.io/gabe565/khinsider
+          tags: |
+            type=raw,priority=1000,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=raw,value=${{ env.KHINSIDER_BRANCH }}
+            type=raw,value=sha-${{ steps.short-sha.outputs.SHA }}
+            type=raw,value=sha-${{ env.KHINSIDER_REF }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          pull: true
+          push: ${{ github.secret_source == 'Actions' && steps.meta.outputs.tags != '' }}
+          platforms: linux/amd64,linux/arm/v6,linux/arm64/v8
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            KHINSIDER_REPO=${{ env.KHINSIDER_REPO }}
+            KHINSIDER_REF=${{ env.KHINSIDER_REF }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
