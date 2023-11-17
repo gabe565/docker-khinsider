@@ -19,7 +19,7 @@ jobs:
 
       - id: short-sha
         name: Get short sha
-        run: echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        run: echo "SHA=${KHINSIDER_REF:0:7}" >> $GITHUB_OUTPUT
 
       - name: Docker meta
         id: meta
