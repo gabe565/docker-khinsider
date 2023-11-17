@@ -1,5 +1,7 @@
 # khinsider Docker Container
 
+[![Build](https://github.com/gabe565/docker-khinsider/actions/workflows/build.yml/badge.svg)](https://github.com/gabe565/docker-khinsider/actions/workflows/build.yml)
+
 This repo builds container images for [obskyr/khinsider](obskyr/khinsider).
 
 Release tags are automatically updated by Renovate bot, so new `khinsider.py` releases will be available in this repository within a few hours.
