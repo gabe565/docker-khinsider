@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine:3.19 AS source
+FROM --platform=$BUILDPLATFORM alpine:3.20 AS source
 
 RUN apk add --no-cache git
 ARG KHINSIDER_REPO=obskyr/khinsider
