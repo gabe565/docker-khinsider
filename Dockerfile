@@ -2,7 +2,7 @@ FROM --platform=$BUILDPLATFORM alpine:3.20 AS source
 
 ARG KHINSIDER_REPO=obskyr/khinsider
 ARG KHINSIDER_REF=bd7ef673ec7af5ce8f580df8f7a3f0746ff1a1ad
-RUN wget "https://raw.githubusercontent.com/$KHINSIDER_REPO/$KHINSIDER_REF/khinsider.py"
+RUN wget "https://github.com/$KHINSIDER_REPO/raw/$KHINSIDER_REF/khinsider.py"
 
 FROM python:3.12.4-alpine
 
