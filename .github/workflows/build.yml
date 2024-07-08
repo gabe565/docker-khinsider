@@ -29,7 +29,6 @@ jobs:
             ghcr.io/gabe565/khinsider
           tags: |
             type=raw,priority=1000,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
-            type=raw,value=${{ env.KHINSIDER_BRANCH }}
             type=raw,value=sha-${{ steps.short-sha.outputs.SHA }}
             type=raw,value=sha-${{ env.KHINSIDER_REF }}
 
