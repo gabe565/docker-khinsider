@@ -13,11 +13,12 @@
     {
       "fileMatch": ["Dockerfile", "^\\.github/workflows/"],
       "matchStrings": [
-        "\\s*KHINSIDER_REPO: +(?<depName>.+)\\n\\s*KHINSIDER_REF: +(?<currentValue>.+)",
-        "ARG +KHINSIDER_REPO=(?<depName>.+)\\nARG +KHINSIDER_REF=(?<currentValue>.+)"
+        "\\s*KHINSIDER_REPO: +(?<depName>.+)\\n\\s*KHINSIDER_REF: +(?<currentDigest>.+)",
+        "ARG +KHINSIDER_REPO=(?<depName>.+)\\nARG +KHINSIDER_REF=(?<currentDigest>.+)"
       ],
       "packageNameTemplate": "https://github.com/{{depName}}",
-      "datasourceTemplate": "git-refs"
+      "datasourceTemplate": "git-refs",
+      "currentValueTemplate": "master"
     }
   ]
 }
