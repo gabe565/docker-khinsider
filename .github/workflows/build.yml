@@ -31,6 +31,13 @@ jobs:
             type=raw,priority=1000,value=latest
             type=raw,value=sha-${{ steps.short-sha.outputs.SHA }}
             type=raw,value=sha-${{ env.KHINSIDER_REF }}
+          labels: |
+            org.opencontainers.image.title=khinsider.py
+            maintainer=gabe565
+            org.opencontainers.image.vendor=gabe565
+            org.opencontainers.image.description=A script for khinsider mass downloads. Get video game soundtracks quickly and easily!
+            org.opencontainers.image.source=https://github.com/${{ env.KHINSIDER_REPO }}
+            org.opencontainers.image.revision=${{ env.KHINSIDER_REF }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
