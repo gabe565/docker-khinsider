@@ -4,7 +4,7 @@ ARG KHINSIDER_REPO=obskyr/khinsider
 ARG KHINSIDER_REF=0c00205782afe9937d64165be6884fe7eaaae801
 RUN wget "https://github.com/$KHINSIDER_REPO/raw/$KHINSIDER_REF/khinsider.py"
 
-FROM python:3.14.3-alpine
+FROM python:3.14.6-alpine
 
 WORKDIR /app
 COPY requirements.txt .
