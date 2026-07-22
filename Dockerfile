@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine:3.23 AS source
+FROM --platform=$BUILDPLATFORM alpine:3.24 AS source
 
 ARG KHINSIDER_REPO=obskyr/khinsider
 ARG KHINSIDER_REF=0c00205782afe9937d64165be6884fe7eaaae801
