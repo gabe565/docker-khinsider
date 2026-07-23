@@ -8,7 +8,7 @@ concurrency:
 
 env:
   KHINSIDER_REPO: obskyr/khinsider
-  KHINSIDER_REF: 0c00205782afe9937d64165be6884fe7eaaae801
+  KHINSIDER_REF: dabe21823e3cca8e8c36da3c46566f4e72cbeaae
 
 jobs:
   build:
